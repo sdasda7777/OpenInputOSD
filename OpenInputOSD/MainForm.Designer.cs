@@ -291,6 +291,7 @@ namespace OpenInputOSD
 			this.button2.TabIndex = 22;
 			this.button2.Text = "Fill";
 			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.Button2Click);
 			// 
 			// button3
 			// 
@@ -300,6 +301,7 @@ namespace OpenInputOSD
 			this.button3.TabIndex = 23;
 			this.button3.Text = "Outline";
 			this.button3.UseVisualStyleBackColor = true;
+			this.button3.Click += new System.EventHandler(this.Button3Click);
 			// 
 			// button4
 			// 
@@ -309,6 +311,7 @@ namespace OpenInputOSD
 			this.button4.TabIndex = 24;
 			this.button4.Text = "Text";
 			this.button4.UseVisualStyleBackColor = true;
+			this.button4.Click += new System.EventHandler(this.Button4Click);
 			// 
 			// MainForm
 			// 

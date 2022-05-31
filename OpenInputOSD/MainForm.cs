@@ -51,7 +51,7 @@ namespace OpenInputOSD {
 				m_overlay = new Overlay((int) numericUpDown1.Value, (int) numericUpDown2.Value,
 				                    	(int) numericUpDown3.Value, (int) numericUpDown4.Value,
 				                    	(int) numericUpDown5.Value, (int) numericUpDown6.Value,
-				                    	cim);
+				                    	m_fill, m_outline, m_text, cim);
 				m_overlay.Show();
 				
 				button1.Text = "Stop Overlay";
@@ -64,13 +64,34 @@ namespace OpenInputOSD {
 			}
 		}
 		
-		void applyColorsToButtons(){
+		void applyColorsToButtons() {
 			button2.BackColor = m_fill;
 			button2.ForeColor = Color.FromArgb(m_fill.ToArgb()^0xffffff);
 			button3.BackColor = m_outline;
 			button3.ForeColor = Color.FromArgb(m_outline.ToArgb()^0xffffff);
 			button4.BackColor = m_text;
 			button4.ForeColor = Color.FromArgb(m_text.ToArgb()^0xffffff);
+		}
+		
+		void Button2Click(object sender, EventArgs e) {
+			if(colorDialog1.ShowDialog() == DialogResult.OK){
+				m_fill = colorDialog1.Color;
+				applyColorsToButtons();
+			}
+		}
+		
+		void Button3Click(object sender, EventArgs e) {
+			if(colorDialog1.ShowDialog() == DialogResult.OK){
+				m_outline = colorDialog1.Color;
+				applyColorsToButtons();
+			}
+		}
+		
+		void Button4Click(object sender, EventArgs e) {
+			if(colorDialog1.ShowDialog() == DialogResult.OK){
+				m_text = colorDialog1.Color;
+				applyColorsToButtons();
+			}
 		}
 	}
 }

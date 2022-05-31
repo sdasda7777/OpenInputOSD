@@ -11,14 +11,16 @@ namespace OpenInputOSD{
 		private Size m_backupSize;
 		private ConsolidatedInputManager m_cim;
 		private int m_rows, m_columns;
+		private Color m_fillColor, m_outlineColor, m_textColor;
 		
-		public Overlay(int posX, int posY, int width, int height,
-		               int columns, int rows,
-						ConsolidatedInputManager inputManager){
+		public Overlay(int posX, int posY, int width, int height, int columns, int rows,
+						Color fillColor, Color outlineColor, Color textColor,
+		               ConsolidatedInputManager inputManager){
 			
 			InitializeComponent();
 			
 			m_rows = rows; m_columns = columns;
+			m_fillColor = fillColor; m_outlineColor = outlineColor; m_textColor = textColor;
 			
 			//Debug.WriteLine("("+posX+","+posY+","+width+","+height+")");
 			
@@ -67,9 +69,9 @@ namespace OpenInputOSD{
 			Graphics g = panel1.CreateGraphics();
 			g.FillRectangle(new SolidBrush(Color.Magenta), 0, 0, panel1.Width, panel1.Height);
 			
-			SolidBrush fillBrush = new SolidBrush(Color.White);
-			Pen outlinePen = new Pen(Color.Black);
-			SolidBrush textBrush = new SolidBrush(Color.Red);
+			SolidBrush fillBrush = new SolidBrush(m_fillColor);
+			Pen outlinePen = new Pen(m_outlineColor);
+			SolidBrush textBrush = new SolidBrush(m_textColor);
 			Font font = new Font(FontFamily.GenericSansSerif, 12);
 			
 			int column = 0;
@@ -87,7 +89,7 @@ namespace OpenInputOSD{
 					               	column_width, stateHeight);
 					g.DrawRectangle(outlinePen,
 					                column * column_width, row * row_height,
-					                column_width, row_height);
+					                column_width, row_height-1);
 					
 					SizeF strSize = g.MeasureString(input.Item1, font);
 					g.DrawString(input.Item1, font, textBrush,
@@ -95,14 +97,16 @@ namespace OpenInputOSD{
 					             row * row_height + row_height / 2 - strSize.Height / 2);
 					
 					++column;
-					if(column > m_columns){
+					if(column >= m_columns){
 						++row;
 						column = 0;
 					}
 				}
 				
-				++row;
-				column = 0;
+				if(column != 0){
+					++row;
+					column = 0;
+				}
 			}
 		}
 	}
