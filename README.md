@@ -1,5 +1,5 @@
 # OpenInputOSD
-Small OSD which shows which inputs are being held
+Small OSD which shows which inputs (keyboard keys, mouse and gamepad buttons, etc.) are being held
 
 ## TODO
 - Dynamic key recognition mode
