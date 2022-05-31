@@ -42,7 +42,10 @@ namespace OpenInputOSD {
 						new InputSourceKeyboard(
 							new List<string>(textBox1.Text.Split(','))));
 					
-				if(checkBox2.Checked) inputSources.Add(new InputSourceMouse());
+				if(checkBox2.Checked)
+					inputSources.Add(
+						new InputSourceMouse(
+							new List<string>(textBox2.Text.Split(','))));
 				
 				if(checkBox3.Checked) inputSources.Add(new InputSourceGamepad());
 				

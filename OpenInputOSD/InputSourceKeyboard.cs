@@ -14,14 +14,12 @@ namespace OpenInputOSD {
 		private List<MuTuple<string, float>> m_state;
 		
 		public InputSourceKeyboard(List<string> keyNames) {
+			m_keys = new List<MuTuple<int, MuTuple<string, float>>>();
 			m_state = new List<MuTuple<string, float>>();
 			
-			m_keys = new List<MuTuple<int, MuTuple<string, float>>>();
 			foreach(string kn in keyNames){
 				System.Windows.Forms.Keys key;
 				if(Enum.TryParse<System.Windows.Forms.Keys>(kn, out key)){
-					Debug.WriteLine("key parsed");
-					
 					MuTuple<string, float> kstate = new MuTuple<string, float>(kn, 0);
 					
 					m_state.Add(kstate);

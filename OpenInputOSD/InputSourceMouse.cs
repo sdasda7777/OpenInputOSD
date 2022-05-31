@@ -1,9 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+
+using System.Diagnostics;
 
 namespace OpenInputOSD {
 	public class InputSourceMouse : InputSource {
-		public InputSourceMouse() {
+		[DllImport("user32.dll")]
+        private static extern int GetSystemMetrics(int index);
+		
+		private List<MuTuple<int, MuTuple<string, float>>> m_buttons;
+		private List<MuTuple<string, float>> m_state;
+		
+		public InputSourceMouse(List<string> buttons) {
 			
 		}
 		

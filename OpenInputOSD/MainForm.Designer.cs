@@ -32,6 +32,11 @@ namespace OpenInputOSD
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.Button button4;
+		private System.Windows.Forms.RadioButton radioButton3;
+		private System.Windows.Forms.RadioButton radioButton4;
+		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.GroupBox groupBox2;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -79,12 +84,19 @@ namespace OpenInputOSD
 			this.button2 = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
+			this.radioButton3 = new System.Windows.Forms.RadioButton();
+			this.radioButton4 = new System.Windows.Forms.RadioButton();
+			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
+			this.groupBox1.SuspendLayout();
+			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// checkBox1
@@ -101,7 +113,7 @@ namespace OpenInputOSD
 			// radioButton1
 			// 
 			this.radioButton1.Checked = true;
-			this.radioButton1.Location = new System.Drawing.Point(31, 201);
+			this.radioButton1.Location = new System.Drawing.Point(13, 15);
 			this.radioButton1.Name = "radioButton1";
 			this.radioButton1.Size = new System.Drawing.Size(301, 24);
 			this.radioButton1.TabIndex = 2;
@@ -120,7 +132,7 @@ namespace OpenInputOSD
 			// 
 			// radioButton2
 			// 
-			this.radioButton2.Location = new System.Drawing.Point(31, 257);
+			this.radioButton2.Location = new System.Drawing.Point(13, 68);
 			this.radioButton2.Name = "radioButton2";
 			this.radioButton2.Size = new System.Drawing.Size(133, 24);
 			this.radioButton2.TabIndex = 4;
@@ -138,7 +150,7 @@ namespace OpenInputOSD
 			// 
 			// checkBox3
 			// 
-			this.checkBox3.Location = new System.Drawing.Point(12, 317);
+			this.checkBox3.Location = new System.Drawing.Point(12, 403);
 			this.checkBox3.Name = "checkBox3";
 			this.checkBox3.Size = new System.Drawing.Size(104, 24);
 			this.checkBox3.TabIndex = 6;
@@ -147,7 +159,7 @@ namespace OpenInputOSD
 			// 
 			// textBox1
 			// 
-			this.textBox1.Location = new System.Drawing.Point(64, 231);
+			this.textBox1.Location = new System.Drawing.Point(42, 42);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(310, 20);
 			this.textBox1.TabIndex = 7;
@@ -156,7 +168,7 @@ namespace OpenInputOSD
 			// button1
 			// 
 			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.button1.Location = new System.Drawing.Point(12, 347);
+			this.button1.Location = new System.Drawing.Point(12, 441);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(362, 38);
 			this.button1.TabIndex = 8;
@@ -313,11 +325,64 @@ namespace OpenInputOSD
 			this.button4.UseVisualStyleBackColor = true;
 			this.button4.Click += new System.EventHandler(this.Button4Click);
 			// 
+			// radioButton3
+			// 
+			this.radioButton3.Checked = true;
+			this.radioButton3.Location = new System.Drawing.Point(13, 12);
+			this.radioButton3.Name = "radioButton3";
+			this.radioButton3.Size = new System.Drawing.Size(326, 24);
+			this.radioButton3.TabIndex = 25;
+			this.radioButton3.TabStop = true;
+			this.radioButton3.Text = "Only specified buttons (System.Windows.Forms.MouseButtons)";
+			this.radioButton3.UseVisualStyleBackColor = true;
+			// 
+			// radioButton4
+			// 
+			this.radioButton4.Location = new System.Drawing.Point(13, 64);
+			this.radioButton4.Name = "radioButton4";
+			this.radioButton4.Size = new System.Drawing.Size(155, 24);
+			this.radioButton4.TabIndex = 26;
+			this.radioButton4.Text = "Any keys (auto mode)";
+			this.radioButton4.UseVisualStyleBackColor = true;
+			// 
+			// textBox2
+			// 
+			this.textBox2.Location = new System.Drawing.Point(40, 38);
+			this.textBox2.Name = "textBox2";
+			this.textBox2.Size = new System.Drawing.Size(310, 20);
+			this.textBox2.TabIndex = 27;
+			this.textBox2.Text = "Left,Middle,Right,XButton1,XButton2";
+			// 
+			// groupBox1
+			// 
+			this.groupBox1.Controls.Add(this.radioButton1);
+			this.groupBox1.Controls.Add(this.textBox1);
+			this.groupBox1.Controls.Add(this.radioButton2);
+			this.groupBox1.Location = new System.Drawing.Point(18, 190);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(356, 94);
+			this.groupBox1.TabIndex = 28;
+			this.groupBox1.TabStop = false;
+			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.radioButton3);
+			this.groupBox2.Controls.Add(this.textBox2);
+			this.groupBox2.Controls.Add(this.radioButton4);
+			this.groupBox2.Location = new System.Drawing.Point(18, 306);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(356, 100);
+			this.groupBox2.TabIndex = 29;
+			this.groupBox2.TabStop = false;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(386, 398);
+			this.ClientSize = new System.Drawing.Size(386, 491);
+			this.Controls.Add(this.groupBox2);
+			this.Controls.Add(this.checkBox1);
+			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.button3);
 			this.Controls.Add(this.button2);
@@ -335,13 +400,9 @@ namespace OpenInputOSD
 			this.Controls.Add(this.numericUpDown1);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.button1);
-			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.checkBox3);
 			this.Controls.Add(this.checkBox2);
-			this.Controls.Add(this.radioButton2);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.radioButton1);
-			this.Controls.Add(this.checkBox1);
 			this.Name = "MainForm";
 			this.Text = "OpenInputOSD - Setup";
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -350,8 +411,11 @@ namespace OpenInputOSD
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
+			this.groupBox1.ResumeLayout(false);
+			this.groupBox1.PerformLayout();
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 	}
