@@ -4,15 +4,16 @@ using System.Drawing;
 using System.Windows;
 using System.Windows.Forms;
 
-using System.Diagnostics;
-
 namespace OpenInputOSD {
 	public partial class MainForm : Form {
 		Overlay m_overlay = null;
 		
-		Color m_fill = Color.White;
-		Color m_outline = Color.Black;
-		Color m_text = Color.Red;
+		Color m_cellFillUnpressed = Color.Transparent;
+		Color m_cellFillPressed = Color.White;
+		Color m_cellOutline = Color.Black;
+		Color m_textFillUnpressed = Color.White;
+		Color m_textFillPressed = Color.Red;
+		Color m_textOutline = Color.Black;
 		
 		public MainForm() {
 			InitializeComponent();
@@ -32,7 +33,7 @@ namespace OpenInputOSD {
 			applyColorsToButtons();
 		}
 		
-		void Button1Click(object sender, EventArgs e) {
+		void b_StartStopOverlay(object sender, EventArgs e) {
 			if(m_overlay == null){
 				
 				List<InputSource> inputSources = new List<InputSource>();
@@ -40,7 +41,9 @@ namespace OpenInputOSD {
 				if(checkBox1.Checked)
 					inputSources.Add(
 						new InputSourceKeyboard(
-							new List<string>(textBox1.Text.Split(','))));
+							(checkBox4.Checked ? new List<string>(textBox1.Text.Split(',')) : new List<string>()),
+							checkBox5.Checked,
+							(checkBox6.Checked ? new List<string>(textBox3.Text.Split(',')) : new List<string>())));
 					
 				if(checkBox2.Checked)
 					inputSources.Add(
@@ -54,7 +57,10 @@ namespace OpenInputOSD {
 				m_overlay = new Overlay((int) numericUpDown1.Value, (int) numericUpDown2.Value,
 				                    	(int) numericUpDown3.Value, (int) numericUpDown4.Value,
 				                    	(int) numericUpDown5.Value, (int) numericUpDown6.Value,
-				                    	m_fill, m_outline, m_text, cim);
+				                    	m_cellFillUnpressed, m_cellFillPressed, m_cellOutline,
+				                    	(int) numericUpDown7.Value, (int) numericUpDown8.Value,
+				                    	m_textFillUnpressed, m_textFillPressed, m_textOutline, 
+				                    	cim);
 				m_overlay.Show();
 				
 				button1.Text = "Stop Overlay";
@@ -67,32 +73,66 @@ namespace OpenInputOSD {
 			}
 		}
 		
+		bool colorIsDark(Color c){
+			/* Values taken from Miral's (https://stackoverflow.com/users/43534/miral)
+				reply to https://stackoverflow.com/a/3943023 */
+			return (c.R * 0.299 + c.G * 0.587 + c.B * 0.114) > 186;
+		}
+		
 		void applyColorsToButtons() {
-			button2.BackColor = m_fill;
-			button2.ForeColor = Color.FromArgb(m_fill.ToArgb()^0xffffff);
-			button3.BackColor = m_outline;
-			button3.ForeColor = Color.FromArgb(m_outline.ToArgb()^0xffffff);
-			button4.BackColor = m_text;
-			button4.ForeColor = Color.FromArgb(m_text.ToArgb()^0xffffff);
+			button2.BackColor = m_cellFillUnpressed;
+			button3.BackColor = m_cellFillPressed;
+			button4.BackColor = m_cellOutline;
+			button5.BackColor = m_textFillUnpressed;
+			button6.BackColor = m_textFillPressed;
+			button7.BackColor = m_textOutline;
+			
+			button2.ForeColor = (colorIsDark(m_cellFillUnpressed) ? Color.Black : Color.White);
+			button3.ForeColor = (colorIsDark(m_cellFillPressed) ? Color.Black : Color.White);
+			button4.ForeColor = (colorIsDark(m_cellOutline) ? Color.Black : Color.White);
+			button5.ForeColor = (colorIsDark(m_textFillUnpressed) ? Color.Black : Color.White);
+			button6.ForeColor = (colorIsDark(m_textFillPressed) ? Color.Black : Color.White);
+			button7.ForeColor = (colorIsDark(m_textOutline) ? Color.Black : Color.White);
 		}
 		
-		void Button2Click(object sender, EventArgs e) {
+		void b_CellFillUnpressed(object sender, EventArgs e) {
 			if(colorDialog1.ShowDialog() == DialogResult.OK){
-				m_fill = colorDialog1.Color;
+				m_cellFillUnpressed = colorDialog1.Color;
 				applyColorsToButtons();
 			}
 		}
 		
-		void Button3Click(object sender, EventArgs e) {
+		void b_CellFillPressed(object sender, EventArgs e) {
 			if(colorDialog1.ShowDialog() == DialogResult.OK){
-				m_outline = colorDialog1.Color;
+				m_cellFillPressed = colorDialog1.Color;
 				applyColorsToButtons();
 			}
 		}
 		
-		void Button4Click(object sender, EventArgs e) {
+		void b_CellOutline(object sender, EventArgs e) {
 			if(colorDialog1.ShowDialog() == DialogResult.OK){
-				m_text = colorDialog1.Color;
+				m_cellOutline = colorDialog1.Color;
+				applyColorsToButtons();
+			}
+		}
+		
+		void b_TextFillUnpressed(object sender, EventArgs e) {
+			if(colorDialog1.ShowDialog() == DialogResult.OK){
+				m_textFillUnpressed = colorDialog1.Color;
+				applyColorsToButtons();
+			}
+		}
+		
+		void b_TextFillPressed(object sender, EventArgs e) {
+			if(colorDialog1.ShowDialog() == DialogResult.OK){
+				m_textFillPressed = colorDialog1.Color;
+				applyColorsToButtons();
+			}
+		}
+		
+		void b_TextOutline(object sender, EventArgs e) {
+			if(colorDialog1.ShowDialog() == DialogResult.OK){
+				m_textOutline = colorDialog1.Color;
 				applyColorsToButtons();
 			}
 		}

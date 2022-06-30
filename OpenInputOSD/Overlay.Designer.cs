@@ -46,9 +46,11 @@ namespace OpenInputOSD
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.Magenta;
 			this.ClientSize = new System.Drawing.Size(284, 261);
 			this.ControlBox = false;
 			this.Controls.Add(this.panel1);
+			this.ForeColor = System.Drawing.Color.Transparent;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "Overlay";
