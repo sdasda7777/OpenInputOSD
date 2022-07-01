@@ -10,8 +10,12 @@ namespace OpenInputOSD {
 		private List<MuTuple<int, MuTuple<string, float>>> m_buttons;
 		private List<MuTuple<string, float>> m_state;
 		
-		public InputSourceMouse(List<string> buttons) {
+		public InputSourceMouse(string inputTrackingString) {
 			
+			List<MuTuple<string, string>> splitAndParsed = InputSource.splitAndParseAliases(inputTrackingString);
+			
+			
+			//System.Windows.Forms.Cursor.Position;
 		}
 		
 		public override void Dispose(){}

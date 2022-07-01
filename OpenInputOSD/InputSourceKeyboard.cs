@@ -11,28 +11,17 @@ namespace OpenInputOSD {
 		private List<MuTuple<int, MuTuple<string, float>>> m_trackedKeys;
 		private List<MuTuple<string, float>> m_trackedKeysStates;
 		
-		public InputSourceKeyboard(List<string> trackedKeyNames) {
+		public InputSourceKeyboard(string inputTrackingString) {
 						
 			// Validate and store keys that should be tracked
 			m_trackedKeys = new List<MuTuple<int, MuTuple<string, float>>>();
 			m_trackedKeysStates = new List<MuTuple<string, float>>();
-			foreach(string kn in trackedKeyNames){
-				string keyEnumName = kn.Trim();
-				string keyDisplayName = keyEnumName;
-				
-				if(keyEnumName.Contains("[") && keyEnumName.Contains("]")){
-					int indexLeft = keyEnumName.IndexOf('[');
-					int indexRight = keyEnumName.IndexOf(']');
-					
-					if(indexRight > indexLeft + 1){
-						keyDisplayName = keyEnumName.Substring(indexLeft + 1, indexRight - indexLeft - 1).Trim();
-						keyEnumName = keyEnumName.Substring(0, keyEnumName.IndexOf('[')).Trim();
-					}
-				}
-				
+			
+			List<MuTuple<string, string>> splitAndParsed = InputSource.splitAndParseAliases(inputTrackingString);
+			foreach(MuTuple<string, string> sap in splitAndParsed){				
 				System.Windows.Forms.Keys key;
-				if(Enum.TryParse<System.Windows.Forms.Keys>(keyEnumName, out key)){
-					MuTuple<string, float> kstate = new MuTuple<string, float>(keyDisplayName, 0);
+				if(Enum.TryParse<System.Windows.Forms.Keys>(sap.Item1, out key)){
+					MuTuple<string, float> kstate = new MuTuple<string, float>(sap.Item2, 0);
 					
 					m_trackedKeysStates.Add(kstate);
 					m_trackedKeys.Add(new MuTuple<int, MuTuple<string, float>>((int) key, kstate));
