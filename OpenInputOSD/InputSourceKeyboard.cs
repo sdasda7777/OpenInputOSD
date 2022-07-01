@@ -2,41 +2,37 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-//using System.Diagnostics;
-
 namespace OpenInputOSD {
 	public class InputSourceKeyboard : InputSource {
 		[DllImport("User32.dll")]
 		private static extern short GetAsyncKeyState(int vKey);
 
-		private System.Windows.Forms.Timer m_timer1;
-		private bool m_addNewKeysAutomatically;
+		private System.Windows.Forms.Timer m_timer;
 		private List<MuTuple<int, MuTuple<string, float>>> m_trackedKeys;
 		private List<MuTuple<string, float>> m_trackedKeysStates;
-		private HashSet<string> m_ignored;
 		
-		public InputSourceKeyboard(List<string> trackedKeyNames, 
-		                           bool addNewKeysAutomatically,
-		                           List<string> trackingExceptionsKeyNames) {
-			
-			m_addNewKeysAutomatically = addNewKeysAutomatically;
-			
-			// Validate and store keys that should be ignored
-			m_ignored = new HashSet<string>();
-			foreach(string kn in trackingExceptionsKeyNames){
-				System.Windows.Forms.Keys key;
-				if(Enum.TryParse<System.Windows.Forms.Keys>(kn, out key)){
-					m_ignored.Add(kn);
-				}
-			}
-			
+		public InputSourceKeyboard(List<string> trackedKeyNames) {
+						
 			// Validate and store keys that should be tracked
 			m_trackedKeys = new List<MuTuple<int, MuTuple<string, float>>>();
 			m_trackedKeysStates = new List<MuTuple<string, float>>();
 			foreach(string kn in trackedKeyNames){
+				string keyEnumName = kn.Trim();
+				string keyDisplayName = keyEnumName;
+				
+				if(keyEnumName.Contains("[") && keyEnumName.Contains("]")){
+					int indexLeft = keyEnumName.IndexOf('[');
+					int indexRight = keyEnumName.IndexOf(']');
+					
+					if(indexRight > indexLeft + 1){
+						keyDisplayName = keyEnumName.Substring(indexLeft + 1, indexRight - indexLeft - 1).Trim();
+						keyEnumName = keyEnumName.Substring(0, keyEnumName.IndexOf('[')).Trim();
+					}
+				}
+				
 				System.Windows.Forms.Keys key;
-				if(Enum.TryParse<System.Windows.Forms.Keys>(kn, out key) && !m_ignored.Contains(kn)){
-					MuTuple<string, float> kstate = new MuTuple<string, float>(kn, 0);
+				if(Enum.TryParse<System.Windows.Forms.Keys>(keyEnumName, out key)){
+					MuTuple<string, float> kstate = new MuTuple<string, float>(keyDisplayName, 0);
 					
 					m_trackedKeysStates.Add(kstate);
 					m_trackedKeys.Add(new MuTuple<int, MuTuple<string, float>>((int) key, kstate));
@@ -45,26 +41,26 @@ namespace OpenInputOSD {
 			
 			/*
 			foreach(var k in m_keys){
-				Debug.WriteLine(k.Item2.Item1);
+				Console.WriteLine(k.Item2.Item1);
 			}
 			*/
 			
-			m_timer1 = new System.Windows.Forms.Timer();
-			m_timer1.Interval = 1;
-			m_timer1.Tick += timer1_Tick;
-			m_timer1.Start();
+			m_timer = new System.Windows.Forms.Timer();
+			m_timer.Interval = 1;
+			m_timer.Tick += timer_Tick;
+			m_timer.Start();
 		}
 		
 		public override void Dispose(){
-			m_timer1.Stop();
-			m_timer1.Dispose();
+			m_timer.Stop();
+			m_timer.Dispose();
 		}
 				
 		public override List<MuTuple<string, float>> getState(){
 			return m_trackedKeysStates;
 		}
 		
-		private void timer1_Tick(object sender, EventArgs ea){
+		private void timer_Tick(object sender, EventArgs ea){
 			bool stateChanged = false;
 			
 			for(int ii = 0; ii < m_trackedKeys.Count; ++ii){

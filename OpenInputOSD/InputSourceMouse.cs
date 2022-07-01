@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-using System.Diagnostics;
-
 namespace OpenInputOSD {
 	public class InputSourceMouse : InputSource {
 		[DllImport("user32.dll")]

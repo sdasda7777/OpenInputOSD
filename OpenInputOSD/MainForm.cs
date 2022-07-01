@@ -41,9 +41,7 @@ namespace OpenInputOSD {
 				if(checkBox1.Checked)
 					inputSources.Add(
 						new InputSourceKeyboard(
-							(checkBox4.Checked ? new List<string>(textBox1.Text.Split(',')) : new List<string>()),
-							checkBox5.Checked,
-							(checkBox6.Checked ? new List<string>(textBox3.Text.Split(',')) : new List<string>())));
+							new List<string>(textBox1.Text.Split(','))));
 					
 				if(checkBox2.Checked)
 					inputSources.Add(

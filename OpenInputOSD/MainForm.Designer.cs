@@ -31,7 +31,6 @@ namespace OpenInputOSD
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Button button5;
@@ -39,10 +38,6 @@ namespace OpenInputOSD
 		private System.Windows.Forms.NumericUpDown numericUpDown8;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label label12;
-		private System.Windows.Forms.TextBox textBox3;
-		private System.Windows.Forms.CheckBox checkBox6;
-		private System.Windows.Forms.CheckBox checkBox5;
-		private System.Windows.Forms.CheckBox checkBox4;
 		private System.Windows.Forms.Button button6;
 		private System.Windows.Forms.Button button7;
 		
@@ -91,11 +86,6 @@ namespace OpenInputOSD
 			this.button3 = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
 			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.textBox3 = new System.Windows.Forms.TextBox();
-			this.checkBox6 = new System.Windows.Forms.CheckBox();
-			this.checkBox5 = new System.Windows.Forms.CheckBox();
-			this.checkBox4 = new System.Windows.Forms.CheckBox();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
 			this.button5 = new System.Windows.Forms.Button();
@@ -111,7 +101,6 @@ namespace OpenInputOSD
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
 			this.SuspendLayout();
@@ -122,9 +111,9 @@ namespace OpenInputOSD
 			this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.checkBox1.Location = new System.Drawing.Point(12, 277);
 			this.checkBox1.Name = "checkBox1";
-			this.checkBox1.Size = new System.Drawing.Size(104, 24);
+			this.checkBox1.Size = new System.Drawing.Size(386, 24);
 			this.checkBox1.TabIndex = 1;
-			this.checkBox1.Text = "Keyboard";
+			this.checkBox1.Text = "Keyboard (Names from System.Windows.Forms.Keys):";
 			this.checkBox1.UseVisualStyleBackColor = true;
 			// 
 			// label1
@@ -138,7 +127,7 @@ namespace OpenInputOSD
 			// 
 			// checkBox2
 			// 
-			this.checkBox2.Location = new System.Drawing.Point(12, 449);
+			this.checkBox2.Location = new System.Drawing.Point(12, 439);
 			this.checkBox2.Name = "checkBox2";
 			this.checkBox2.Size = new System.Drawing.Size(263, 24);
 			this.checkBox2.TabIndex = 5;
@@ -156,11 +145,13 @@ namespace OpenInputOSD
 			// 
 			// textBox1
 			// 
-			this.textBox1.Location = new System.Drawing.Point(42, 42);
+			this.textBox1.Location = new System.Drawing.Point(36, 307);
+			this.textBox1.Multiline = true;
 			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(310, 20);
+			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.textBox1.Size = new System.Drawing.Size(350, 117);
 			this.textBox1.TabIndex = 7;
-			this.textBox1.Text = "W,S,A,D,LShiftKey,LControlKey,Space";
+			this.textBox1.Text = "W, S, A, D, \r\nLShiftKey [Shift], LControlKey [Ctrl], LMenu [Alt], Space [SPC]";
 			// 
 			// button1
 			// 
@@ -303,7 +294,7 @@ namespace OpenInputOSD
 			this.numericUpDown6.Size = new System.Drawing.Size(116, 20);
 			this.numericUpDown6.TabIndex = 18;
 			this.numericUpDown6.Value = new decimal(new int[] {
-			2,
+			4,
 			0,
 			0,
 			0});
@@ -340,61 +331,11 @@ namespace OpenInputOSD
 			// 
 			// textBox2
 			// 
-			this.textBox2.Location = new System.Drawing.Point(60, 479);
+			this.textBox2.Location = new System.Drawing.Point(36, 469);
 			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(310, 20);
+			this.textBox2.Size = new System.Drawing.Size(350, 20);
 			this.textBox2.TabIndex = 27;
 			this.textBox2.Text = "Left,Middle,Right,XButton1,XButton2";
-			// 
-			// groupBox1
-			// 
-			this.groupBox1.Controls.Add(this.textBox3);
-			this.groupBox1.Controls.Add(this.checkBox6);
-			this.groupBox1.Controls.Add(this.checkBox5);
-			this.groupBox1.Controls.Add(this.checkBox4);
-			this.groupBox1.Controls.Add(this.textBox1);
-			this.groupBox1.Location = new System.Drawing.Point(18, 296);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(356, 147);
-			this.groupBox1.TabIndex = 28;
-			this.groupBox1.TabStop = false;
-			// 
-			// textBox3
-			// 
-			this.textBox3.Location = new System.Drawing.Point(42, 121);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(310, 20);
-			this.textBox3.TabIndex = 40;
-			this.textBox3.Text = "LControlKey,W";
-			// 
-			// checkBox6
-			// 
-			this.checkBox6.Location = new System.Drawing.Point(13, 95);
-			this.checkBox6.Name = "checkBox6";
-			this.checkBox6.Size = new System.Drawing.Size(326, 24);
-			this.checkBox6.TabIndex = 39;
-			this.checkBox6.Text = "Except for (System.Windows.Forms.Keys):";
-			this.checkBox6.UseVisualStyleBackColor = true;
-			// 
-			// checkBox5
-			// 
-			this.checkBox5.Location = new System.Drawing.Point(13, 65);
-			this.checkBox5.Name = "checkBox5";
-			this.checkBox5.Size = new System.Drawing.Size(204, 24);
-			this.checkBox5.TabIndex = 38;
-			this.checkBox5.Text = "Automatically add new keys";
-			this.checkBox5.UseVisualStyleBackColor = true;
-			// 
-			// checkBox4
-			// 
-			this.checkBox4.Checked = true;
-			this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBox4.Location = new System.Drawing.Point(13, 12);
-			this.checkBox4.Name = "checkBox4";
-			this.checkBox4.Size = new System.Drawing.Size(326, 24);
-			this.checkBox4.TabIndex = 37;
-			this.checkBox4.Text = "Start with tracking these keys (System.Windows.Forms.Keys):";
-			this.checkBox4.UseVisualStyleBackColor = true;
 			// 
 			// label9
 			// 
@@ -501,6 +442,7 @@ namespace OpenInputOSD
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(410, 683);
+			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.button7);
 			this.Controls.Add(this.button6);
 			this.Controls.Add(this.label12);
@@ -512,7 +454,6 @@ namespace OpenInputOSD
 			this.Controls.Add(this.label10);
 			this.Controls.Add(this.label9);
 			this.Controls.Add(this.checkBox1);
-			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.button3);
 			this.Controls.Add(this.button2);
@@ -541,8 +482,6 @@ namespace OpenInputOSD
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
 			this.ResumeLayout(false);
